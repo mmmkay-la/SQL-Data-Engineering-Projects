@@ -9,3 +9,7 @@
 
 -- Create & Load Flat Mart
 .read 2_Data_Warehouse_Mart_Build/03_create_flat_mart.sql
+
+
+-- Create & Load Skills Mart
+.read 2_Data_Warehouse_Mart_Build/04_create_skils_mart.sql
