@@ -6,10 +6,10 @@ CREATE DATABASE IF NOT EXISTS jobs_analysis_dw;
 USE jobs_analysis_dw;
 
 -- Drop Tables If Existing
+DROP TABLE IF EXISTS skills_job_dim;
 DROP TABLE IF EXISTS skills_dim;
 DROP TABLE IF EXISTS job_posts_fact;
 DROP TABLE IF EXISTS company_dim;
-DROP TABLE IF EXISTS skills_job_dim;
 
 CREATE TABLE IF NOT EXISTS company_dim(
     company_id INTEGER PRIMARY KEY NOT NULL,
@@ -31,11 +31,11 @@ CREATE TABLE IF NOT EXISTS job_posts_fact(
     search_location VARCHAR,
     job_posted_date TIMESTAMP,
     job_no_degree_mention   BOOLEAN,
-    job_health_insurace BOOLEAN,
+    job_health_insurance BOOLEAN,
     job_country     VARCHAR,
     salary_rate     VARCHAR,
     salary_year_avg DOUBLE,
-    salry_hour_avg DOUBLE
+    salary_hour_avg DOUBLE
 );
 
 CREATE TABLE IF NOT EXISTS skills_dim(
