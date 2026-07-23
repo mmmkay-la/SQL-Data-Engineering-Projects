@@ -6,7 +6,6 @@ CREATE DATABASE IF NOT EXISTS jobs_analysis_dw;
 USE jobs_analysis_dw;
 
 -- Drop Tables If Existing
-
 DROP TABLE IF EXISTS skills_dim;
 DROP TABLE IF EXISTS job_posts_fact;
 DROP TABLE IF EXISTS company_dim;
@@ -52,13 +51,6 @@ CREATE TABLE IF NOT EXISTS skills_job_dim(
     FOREIGN KEY (job_id) REFERENCES job_posts_fact(job_id),
     FOREIGN KEY (skill_id) REFERENCES skills_dim(skill_id)
 );
-
-/* SOURCE FILES
-FROM read_csv('https://storage.googleapis.com/sql_de/skills_dim.csv', 
-FROM read_csv('https://storage.googleapis.com/sql_de/job_postings_fact.csv',
-FROM read_csv('https://storage.googleapis.com/sql_de/skills_job_dim.csv', 
-FROM read_csv('https://storage.googleapis.com/sql_de/company_dim.csv', 
-*/
 
 SELECT * FROM job_posts_fact;
 SELECT * FROM company_dim;
