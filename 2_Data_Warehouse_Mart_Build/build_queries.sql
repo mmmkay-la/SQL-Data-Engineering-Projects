@@ -15,3 +15,8 @@
 
 -- 05 Create & Load Prirority Mart
 .read 2_Data_Warehouse_Mart_Build/05_create_priority_mart.sql
+
+-- 06 Update Priority Mart
+-- .read 2_Data_Warehouse_Mart_Build/06_update_priority_mart.sql
+
+-- 07 Create & Load Company Mart
