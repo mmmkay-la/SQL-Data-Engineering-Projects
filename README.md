@@ -8,3 +8,4 @@ A SQL project analyzing data engeneering job market in the Philippines using rea
 This project is created to demonstrate skills in writing production quality analytical SQL, design efficient queries, and turn business questions into data-driven insights.
 
 ### [Data Warehouse & Mart Build](2_Data_Warehouse_Mart_Build)
+An end-to-end data engineering pipeline that transforms raw data from CSV files in Google Cloud Storage to a normalized star schema data warehouse. Data Marts are also built for specific use cases.
