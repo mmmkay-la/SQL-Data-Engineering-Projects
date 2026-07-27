@@ -20,3 +20,4 @@
 -- .read 2_Data_Warehouse_Mart_Build/06_update_priority_mart.sql
 
 -- 07 Create & Load Company Mart
+.read 2_Data_Warehouse_Mart_Build/07_company_mart.sql
