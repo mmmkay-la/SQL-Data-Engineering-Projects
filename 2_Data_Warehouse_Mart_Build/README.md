@@ -11,23 +11,31 @@ An end-to-end data engineering pipeline that transforms raw data from CSV files 
 - **Mart Architecture** - Created specialized data marts with additive measures and incremental update patterns.
 
 ## ❓Problem & Context
-Raw job posting data arrives as flat CSV files in Google Cloud Storage—not structured for analytical queries. Analysts need to answer:
+Raw job posting data arrives as flat CSV files in Google Cloud Storage—not structured for analytical queries. 
+
+<!-- Analysts need to answer:
 
     Which skills are most in-demand over time?
     What are hiring trends by company and location?
-    How do salary patterns vary by role and skill?
+    How do salary patterns vary by role and skill? -->
 
-***Challenge:*** Data teams need a single source of truth system (a data warehouse) to be able to perform consistent, reliable analysis across the organization. Additionally, specialized data marts are required to optimize resources by pre-aggregating data for specific business use cases, reducing query complexity and improving performance for common analytical patterns.
+***‼️ Challenge:*** Data teams need a single source of truth system (a data warehouse) to be able to perform consistent, reliable analysis across the organization. Additionally, specialized data marts are required to optimize resources by pre-aggregating data for specific business use cases, reducing query complexity and improving performance for common analytical patterns.
 
-***Solution:*** End-to-end ETL pipeline that extracts CSV files from cloud storage, normalizes them into a star schema warehouse (separating facts from dimensions), and creates specialized data marts optimized for specific use cases (flat queries, skill demand analysis, priority role tracking).
+***✅ Solution:*** End-to-end ETL pipeline that extracts CSV files from cloud storage, normalizes them into a star schema warehouse (separating facts from dimensions), and creates specialized data marts optimized for specific use cases (flat queries, skill demand analysis, priority role tracking).
 
 ## 🧰 Tech Stack
 - **Database** : Duckdb/MotherDuck 
+
 - **Language** : SQL (DDL & DML for schema design and data loading and transformations)
+
 - **Data Model** : Star Schema (Fact, Dimension & Bridge Tables)
+
 - **Development** : VS Code for code editing + Terminal for Duckdb CLI Exectution
+
 - **Automation** : Used a master Build SQL file to run queries sequentialy.
+
 - **Version Control** : Git (local repo) & Github (remote repo)
+
 - **Storage** : Google Cloud Storage for CSV source files.
 
 ## ⛓️ Pipeline Architecture
@@ -71,37 +79,55 @@ Implemented using star schema with the following tables:
 - **Purpose:** Show company hiring trends by role, location & Month
 - **Grain:** `company_id` + `job_title_short_id` + `location_id` + `month_start_date`
 
-## 📊 Analysis Overview
+<!-- ## 📊 Analysis Overview
 - Which skills are most in-demand over time?
+    - From 2023-Q1 upto 2025-Q2, `SQL`, `Python` and `AWS` hold the top-3 most in-demand skills overall.
+    
 - What are hiring trends by company and location?
-- How do salary patterns vary by role and skill?
+- How do salary patterns vary by role and skill? -->
 
 ## 🧠 SQL Skills Demonstrated
 #### ETL Pipeline Development
 - **Extract:** Direct loading of CSVs from CSV with using Duckdb's `httpfs` extension.
+
 - **Transform:** Data nomalization, conversion (casting data types and `DATE_TRUNC`) and quality filtering.
+
 - **Load:** Idempotent table creation with the use of.
+
 - **Incremental Updates:** Use of `MERGE` Operations for upsert patterns. 
+
 - **Orchestration:** Use of master `build_queries.sql` for automated pipeline execution.
  
 #### Dimensional Modeling
 - **Star Schema Design:** Use of Fact & Dimention Tables
+
 - **Bridge Tables:** Handling of many-to-many relationships.
+
 - **Grain Definition:** Proper Fact Table Granularity
+
 - **Additive Measures:** Used of `COUNT` and `SUM` that can be re-aggregated at any level.
 
 #### SQL Advanced Techniques
 - **DDL Operations:** `CREATE TABLE` & `DROP TABLE`, `CREATE SCHEMA` for schema management
-- **DML Operations:** 
-- **Merge Operation:**
-- **CTEs:** 
-- **Date Functions:** 
-- **String Functions:**
-- **Boolean Logic:**
+
+- **DML Operations:** `INSERT INTO ... SELECT` with exclusive column mapping from the CSV file sources.
+
+- **Merge Operation:** Use of `MERGE INTO` with `WHEN MATCHED`, `WHEN NOT MATCHED` and `WHEN NOT MATCHED BY SOURCE` clauses in performing incremental updates. 
+
+- **CTEs:** Used for complex transformations
+
+- **Date Functions:** `DATE_TRUNC('month')` for unified date.
+
+- **String Functions:** Concatenation of values. `CONCAT`
+
+- **Boolean Logic:** `CASE WHEN` conversion for aggregating flags.
 
 #### Data Quality & Production Practices
 - **Idempotency:** Ensuring that running master build script can be run repeatedly without error.
+
 - **Data Validations:** Included validations for row counts and selecting sample data for each table.
+
 - **Type Safety:** Proper Data type definitions (`INETEGER`, `VARCHAR`, `DATE`, `BOOLEAN`, `DOUBLE`)
+
 - **Schema Organization:** Separate schemas for each Data Mart.
 
