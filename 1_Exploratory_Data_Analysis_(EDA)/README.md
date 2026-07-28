@@ -5,7 +5,7 @@ A SQL project analyzing data engeneering job market in the Philippines using rea
 This project is created to demonstrate skills in writing production quality analytical SQL, design efficient queries, and turn business questions into data-driven insights.
 
 ## 🖥️ Executive Summary
-- **Project Scope:** Buid *3 analytical queries* answering questions about Data Engineeirng job market in the philipppines.
+- **Project Scope:** Build *3 analytical queries* answering questions about Data Engineeirng job market in the philipppines.
 
 1. [01_top__in_demand_skills.sql](/1_Exeploratory_Data_Analysis_(EDA)/01_top_in_demand_skills.sql) - demand analysis of data engineering skills
 
